@@ -1,3 +1,8 @@
 module.exports = {
-    dependencies: {},
+    project: {
+        android: {
+          sourceDir: '../',
+        },
+      },
+    dependencies: {}
   };
