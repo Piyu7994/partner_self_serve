@@ -1,9 +1,16 @@
+import { useState } from "react"
 import { View, StyleSheet } from "react-native"
 import { LogoCover } from "../../../../components/about/LogoCover/LogoCover"
-import { Header } from "@practo/self-serve"
+import { Header, DeleteBottomSheet } from "@practo/self-serve"
 import { BottomButtonCard } from "../../../../components/about/BottomLogoButtonCard/BottomButtonCard"
 
 export const L1_LogoCover = () => {
+
+    const [isDeleteBottomSheetVisible, setIsDeleteBottomSheetVisible] = useState(false);
+    const onDeleteHandler = () => {
+        setIsDeleteBottomSheetVisible(true);
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.content}>
@@ -22,8 +29,37 @@ export const L1_LogoCover = () => {
                 </View>
             </View>
             <View style={styles.buttonContainer}>
-                <BottomButtonCard />
+                <BottomButtonCard onDeleteHandler={onDeleteHandler}/>
             </View>
+
+
+
+            <DeleteBottomSheet
+                icon="https://i.postimg.cc/85z10p6t/image.png"
+                isVisible={isDeleteBottomSheetVisible}
+                onClose={() => setIsDeleteBottomSheetVisible(false)}
+                primaryButtonProps={{
+                    btnStyle: 'Fill',
+                    enableLeftIcon: false,
+                    enableRightIcon: false,
+                    onPress: () => setIsDeleteBottomSheetVisible(false),
+                    size: 'Medium',
+                    state: 'Default',
+                    text: 'Remove',
+                    type: 'Warning'
+                }}
+                secondaryButtonProps={{
+                    btnStyle: 'Outline',
+                    enableLeftIcon: false,
+                    enableRightIcon: false,
+                    onPress: () => setIsDeleteBottomSheetVisible(false),
+                    size: 'Medium',
+                    state: 'Default',
+                    text: 'Cancel',
+                    type: 'Neutral'
+                }}
+                title="Are you sure you want to delete this image?"
+/>
         </View>
     )
 }
