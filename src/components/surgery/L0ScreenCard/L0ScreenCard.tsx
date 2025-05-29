@@ -15,7 +15,7 @@ interface ButtonProps {
   enableRightIcon?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   text,
   onPress,
   disabled = false,
@@ -28,6 +28,13 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   // Get colors based on type and style
   const getColors = () => {
+    if (btnStyle === 'Fill') {
+      return {
+        backgroundColor: type === 'Secondary' ? '#FAB318' : '#1890FF',
+        textColor: '#FFFFFF',
+        iconColor: '#FFFFFF'
+      };
+    }
     if (btnStyle === 'Soft') {
       return {
         backgroundColor: type === 'Neutral' ? '#F5F5F5' : '#E6F4FF',
@@ -35,7 +42,13 @@ const Button: React.FC<ButtonProps> = ({
         iconColor: type === 'Neutral' ? '#666666' : '#1890FF'
       };
     }
-    // Add other style combinations as needed
+    if (btnStyle === 'Outline') {
+      return {
+        backgroundColor: '#FFFFFF',
+        textColor: type === 'Neutral' ? '#000000' : '#1890FF',
+        iconColor: type === 'Neutral' ? '#000000' : '#1890FF'
+      };
+    }
     return {
       backgroundColor: '#FFFFFF',
       textColor: '#000000',
@@ -93,7 +106,11 @@ const Button: React.FC<ButtonProps> = ({
     justifyContent: 'center',
     flexDirection: 'row',
     gap: 8,
-    opacity: disabled ? 0.5 : 1
+    opacity: disabled ? 0.5 : 1,
+    ...(btnStyle === 'Outline' && {
+      borderWidth: 1,
+      borderColor: '#000000',
+    })
   };
 
   const defaultTextStyle: TextStyle = {

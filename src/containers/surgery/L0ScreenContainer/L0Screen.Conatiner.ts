@@ -61,7 +61,7 @@ const mapStateToProps = (state: any): L0ScreenCardProps => ({
       leftIcon: true,
       leftIconType: "Info",
       priority: "Secondary",
-      state: "Success",
+      state: "Error",
       title: "Add doctors performing 5 surgeries"
     },
     emptyDataAlert: {
