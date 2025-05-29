@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native"
 import { EstablishmentName } from "../../../../components/about/EstablishmentDetailsCard/EstablishmentName"
 import { Header } from "@practo/self-serve"
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     gap: {
-        height: 10,
+        height: 0,
     },
     inputWrapper: {
         marginTop: 24,
@@ -56,10 +57,7 @@ const styles = StyleSheet.create({
     headerContainer: {
         backgroundColor: '#ffffff',
         height: 56,
-        paddingTop: 16,
-        marginTop: 24,
-        marginLeft: 12,
-        paddingBottom: 12,
+        paddingStart: 16
     },
     buttonContainer: {
         paddingHorizontal: 16,

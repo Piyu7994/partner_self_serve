@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { ScrollView, View, StyleSheet, StatusBar } from "react-native"
 import { LogoCard } from "../../../../components/about/LogoCard/LogoCard"
 import { TimingCard } from "../../../../components/about/TimingCard/TimingCard"
@@ -10,7 +11,6 @@ import { OwnershipCard } from "../../../../components/about/OwnershipCard/Owners
 export const L1_AboutUs = () => {
     return (
         <View>
-            <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
             <ScrollView>
                 <View style={styles.headerContainer}>
                     <Header
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 12
     },
     headerContainer: {
-        marginTop: 35,
         backgroundColor: '#ffffff',
-        height: 56
+        height: 56,
+        paddingStart: 16
     }
 })
