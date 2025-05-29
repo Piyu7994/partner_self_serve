@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "../theme/color";
-import { L2_EstablishmentDescription } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentDescription";
+import { L2_RegistrationFee } from "../screens/establishment/about/AboutUsFlow/L2_RegistrationFee";
 
 const AppNavigator = () => {
     const AppStack = createNativeStackNavigator();
@@ -21,7 +21,7 @@ const AppNavigator = () => {
         >
             <AppStack.Screen
                 name="L0"
-                component={L2_EstablishmentDescription}
+                component={L2_RegistrationFee}
             />
            
         </AppStack.Navigator>
