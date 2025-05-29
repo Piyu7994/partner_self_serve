@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import L2SurgeryPage, { L2SurgeryPageProps } from '../../../components/surgery/L2SurgeryPage/L2SurgeryPage'
+import SurgeryDetailsPage, { SurgeryDetailsPageProps } from '../../../components/surgery/SurgeryDetailsPage/SurgeryDetailsPage'
 
-const mapStateToProps = (state: any): L2SurgeryPageProps => ({
+const mapStateToProps = (state: any): SurgeryDetailsPageProps => ({
     surgeryName: 'Robotic Knee Replacement surgery',
     showRatingButton: true,
     surgeryPrice: {
@@ -16,7 +16,7 @@ const mapStateToProps = (state: any): L2SurgeryPageProps => ({
     showMedia: false,
     doctorData: [
         {
-            name: 'Dr. Aditi P. Ramachandran',
+            name: 'Dr. Aditi P. Ramachandran',  
             post: 'Dentist Surgeon, Orthodontist',
             fee: 400,
             experience: 18,
@@ -48,4 +48,4 @@ const mapDispatchToProps = (dispatch: any) => ({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(L2SurgeryPage)
+export default connect(mapStateToProps, mapDispatchToProps)(SurgeryDetailsPage)

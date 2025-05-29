@@ -1,9 +1,9 @@
 // src/containers/L0Screen/L0Screen.tsx
 import React from 'react';
 import { connect } from 'react-redux';
-import L0ScreenCard, {L0ScreenCardProps} from '../../../components/surgery/L0ScreenCard/L0ScreenCard'
+import SurgeryOverviewCard, {SurgeryOverviewCardProps} from '../../../components/surgery/SurgeryOverviewCard/SurgeryOverviewCard'
 
-const mapStateToProps = (state: any): L0ScreenCardProps => ({
+const mapStateToProps = (state: any): SurgeryOverviewCardProps => ({
   header: {
     title: "Surgeries & treatments",
     subtext: "18 surgeries & 10 treatments  Need help? See examples",
@@ -11,10 +11,10 @@ const mapStateToProps = (state: any): L0ScreenCardProps => ({
   buttons: {
     helpButton: {
       text: "Need help? See example",
-      btnStyle: "Soft" as const,
-      size: "Medium" as const,
-      state: "Default" as const,
-      type: "Neutral" as const,
+      btnStyle: "Soft",
+      size: "Medium",
+      state: "Default",
+      type: "Neutral",
     },
     addButton: {
       text: "Add Surgeries/treatments",
@@ -97,4 +97,4 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(L0ScreenCard);
+export default connect(mapStateToProps, mapDispatchToProps)(SurgeryOverviewCard);

@@ -29,6 +29,13 @@ export const Button: React.FC<ButtonProps> = ({
   // Get colors based on type and style
   const getColors = () => {
     if (btnStyle === 'Fill') {
+      if (type === 'Warning') {
+        return {
+          backgroundColor: '#dc2626',
+          textColor: '#FFFFFF',
+          iconColor: '#FFFFFF'
+        };
+      }
       return {
         backgroundColor: type === 'Secondary' ? '#FAB318' : '#1890FF',
         textColor: '#FFFFFF',
@@ -188,7 +195,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export interface L0ScreenCardProps {
+export interface SurgeryOverviewCardProps {
   header: {
     title: string;
     subtext: string;
@@ -247,7 +254,7 @@ export interface L0ScreenCardProps {
 }
 
 
-const L0ScreenCard: React.FC<L0ScreenCardProps> = ({header, buttons, surgeries, alert, bottomSheetData, bottomSheetHeader}) => {
+const SurgeryOverviewCard: React.FC<SurgeryOverviewCardProps> = ({header, buttons, surgeries, alert, bottomSheetData, bottomSheetHeader}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
@@ -456,4 +463,4 @@ const styles2 = StyleSheet.create({
 
 
 
-export default L0ScreenCard;
+export default SurgeryOverviewCard;

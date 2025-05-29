@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Image, Text, TouchableOpacity, ScrollView, RefreshControl, Keyboard } from 'react-native'
 import { Header, TransparentPill, AddLogo, Alert, DoctorItemGeneral, Input, InfoCard } from '@practo/self-serve'
-import { Button } from '../L0ScreenCard/L0ScreenCard'
+import { Button } from '../SurgeryOverviewCard/SurgeryOverviewCard'
 import BottomSheet from '../../BottomSheet/BottomSheet'
 
 interface SurgeryData {
@@ -296,7 +296,7 @@ const ModalChildrenMedia = () => {
     )
 }
 
-export interface L2SurgeryPageProps {
+export interface SurgeryDetailsPageProps {
     surgeryName: string;
     showRatingButton: boolean;
     surgeryPrice: {
@@ -319,7 +319,7 @@ export interface L2SurgeryPageProps {
     onRefresh?: () => Promise<any>;
 }
 
-const L2SurgeryPage: React.FC<L2SurgeryPageProps> = (props) => {
+const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
   const { surgeryName, showRatingButton, surgeryPrice, pillText, reviewCount, rating, surgeryDescriptionQuestion, surgeryDescription, showMedia, doctorData, onRefresh } = props;
   const [isPriceModalVisible, setIsPriceModalVisible] = useState(false);
   const [isDescriptionModalVisible, setIsDescriptionModalVisible] = useState(false);
@@ -715,4 +715,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default L2SurgeryPage
+export default SurgeryDetailsPage
