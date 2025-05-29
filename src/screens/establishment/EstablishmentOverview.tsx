@@ -2,15 +2,21 @@
  * Level 0 screen of provide establishment self-serve
  */
 
-import { ScrollView, StyleSheet } from "react-native";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
+
+import hospitalCoverImg from '../../assets/images/hospital_cover.png'
+import { AboutOverviewScreen } from "./about/AboutOverview/AboutOverviewScreen";
 
 const EstablishmentOverviewScreen: React.FC = () => {
     return (
         <SafeAreaView edges={['left', 'right', 'bottom' ]} style={{flex: 1}}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                
+                <Image source={hospitalCoverImg} style={{width: '100%', height: 192}}/>
+                <View style={styles.cardsContainer}>
+                    <AboutOverviewScreen />
+                </View>
             </ScrollView>
         </SafeAreaView>
     )
