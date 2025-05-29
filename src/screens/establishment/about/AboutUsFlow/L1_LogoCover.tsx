@@ -3,6 +3,14 @@ import { View, StyleSheet } from "react-native"
 import { LogoCover } from "../../../../components/about/LogoCover/LogoCover"
 import { Header, DeleteBottomSheet } from "@practo/self-serve"
 import { BottomButtonCard } from "../../../../components/about/BottomLogoButtonCard/BottomButtonCard"
+import { useNavigation } from "@react-navigation/native"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+
+type RootStackParamList = {
+    L1_LogoCover: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export const L1_LogoCover = () => {
 
@@ -10,6 +18,7 @@ export const L1_LogoCover = () => {
     const onDeleteHandler = () => {
         setIsDeleteBottomSheetVisible(true);
     }
+    const navigation = useNavigation<NavigationProp>();
 
     return (
         <View style={styles.container}>
@@ -17,7 +26,7 @@ export const L1_LogoCover = () => {
                 <View style={styles.gap} />
                 <View style={styles.headerContainer}>
                 <Header
-                    onBackPress={() => {}}
+                    onBackPress={() => navigation.goBack()}
                     showBackIcon
                     subtext=""
                     title="Logo"

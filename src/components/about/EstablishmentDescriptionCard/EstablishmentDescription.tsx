@@ -5,7 +5,7 @@ export const EstablishmentDescription = () => {
     return (
         <View style={styles.inputContainer}>
             <Input
-                disableRightAction
+                disableRightAction={false}
                 helperState="Default"
                 label="Establishment Description (required)"
                 showLabel

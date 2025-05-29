@@ -2,8 +2,11 @@ import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native"
 import { FoundationYearCard } from "../../../../components/about/FoundationYearCard/FoundationYearCard"
 import { Header } from "@practo/self-serve"
 import { BottomSaveButton } from "../../../../components/about/BottomSaveButton/BottomSaveButton"
+import { useNavigation } from "@react-navigation/native"
 
 export const L2_FoundationYear = () => {
+    const navigation = useNavigation();
+
  return (
     <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -14,7 +17,7 @@ export const L2_FoundationYear = () => {
             <View style={styles.gap} />
             <View style={styles.headerContainer}>
                 <Header
-                    onBackPress={() => { }}
+                    onBackPress={() => navigation.goBack()}
                     showBackIcon
                     subtext=""
                     title="Year of Foundation"
@@ -62,6 +65,7 @@ const styles = StyleSheet.create({
         paddingTop: 12,
         backgroundColor: '#ffffff',
         minHeight: 100,
-        marginBottom: -53,
+        left: 0,
+        right: 0,
     }
 })

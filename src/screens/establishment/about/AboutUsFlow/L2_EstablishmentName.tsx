@@ -2,8 +2,12 @@ import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native"
 import { EstablishmentName } from "../../../../components/about/EstablishmentDetailsCard/EstablishmentName"
 import { Header } from "@practo/self-serve"
 import { BottomSaveButton } from "../../../../components/about/BottomSaveButton/BottomSaveButton"
+import { useNavigation } from "@react-navigation/native"
+import { colors } from "../../../../theme/color"
 
 export const L2_EstablishmentName = () => {
+    const navigation = useNavigation();
+
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -14,7 +18,7 @@ export const L2_EstablishmentName = () => {
                 <View style={styles.gap} />
                 <View style={styles.headerContainer}>
                 <Header
-                    onBackPress={() => { }}
+                    onBackPress={() => navigation.goBack()}
                     showBackIcon
                     subtext=""
                     title="Establishment Name"
@@ -35,6 +39,7 @@ export const L2_EstablishmentName = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: colors.bg.tertiary,
     },
     content: {
         flex: 1,
@@ -62,6 +67,8 @@ const styles = StyleSheet.create({
         paddingTop: 12,
         backgroundColor: '#ffffff',
         minHeight: 100,
-        marginBottom: -53,
+        left: 0,
+        right: 0,
+        
     }
 })

@@ -5,7 +5,7 @@ export const FoundationYearCard = () => {
         return(
             <View style={styles.inputContainer}>
             <Input
-                disableRightAction
+                disableRightAction={false}
                 helperState="Default"
                 label="Year of Foundation (required)"
                 showLabel

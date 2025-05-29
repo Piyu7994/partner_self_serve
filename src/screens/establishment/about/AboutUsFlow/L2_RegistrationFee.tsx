@@ -3,8 +3,11 @@ import { FoundationYearCard } from "../../../../components/about/FoundationYearC
 import { Header } from "@practo/self-serve"
 import { BottomSaveButton } from "../../../../components/about/BottomSaveButton/BottomSaveButton"
 import { RegistrationFeeCard } from "../../../../components/about/RegistrationFeeCard/RegistrationFeeCard"
+import { useNavigation } from "@react-navigation/native"
 
 export const L2_RegistrationFee = () => {
+    const navigation = useNavigation();
+
  return (
     <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -15,7 +18,7 @@ export const L2_RegistrationFee = () => {
             <View style={styles.gap} />
             <View style={styles.headerContainer}>
                 <Header
-                    onBackPress={() => { }}
+                    onBackPress={() => navigation.goBack()}
                     showBackIcon
                     subtext=""
                     title="Add Registration Fee"
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
         paddingTop: 12,
         backgroundColor: '#ffffff',
         minHeight: 100,
-        marginBottom: -53,
+        left: 0,
+        right: 0,
     }
 })

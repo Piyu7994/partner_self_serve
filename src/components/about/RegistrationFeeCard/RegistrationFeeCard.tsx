@@ -5,7 +5,7 @@ export const RegistrationFeeCard = () => {
         return(
             <View style={styles.inputContainer}>
             <Input
-                disableRightAction
+                disableRightAction={false}
                 helperState="Default"
                 label="Registration Fee (required)"
                 showLabel

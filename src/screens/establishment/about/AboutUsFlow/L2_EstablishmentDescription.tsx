@@ -3,8 +3,11 @@ import { EstablishmentName } from "../../../../components/about/EstablishmentDet
 import { Header } from "@practo/self-serve"
 import {EstablishmentDescription} from "../../../../components/about/EstablishmentDescriptionCard/EstablishmentDescription"
 import { BottomSaveButton } from "../../../../components/about/BottomSaveButton/BottomSaveButton"
+import { useNavigation } from "@react-navigation/native"
 
 export const L2_EstablishmentDescription = () => {
+    const navigation = useNavigation();
+
     return (
         <KeyboardAvoidingView 
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -15,7 +18,7 @@ export const L2_EstablishmentDescription = () => {
                 <View style={styles.gap} />
                 <View style={styles.headerContainer}>
                 <Header
-                    onBackPress={() => { }}
+                    onBackPress={() => navigation.goBack()}
                     showBackIcon
                     subtext=""
                     title="Establishment Description"
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
         paddingTop: 12,
         backgroundColor: '#ffffff',
         minHeight: 100,
-        marginBottom: -53,
+        left: 0,
+        right: 0,
     }
 })

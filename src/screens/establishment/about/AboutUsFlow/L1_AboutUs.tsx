@@ -1,4 +1,3 @@
-import React from "react"
 import { ScrollView, View, StyleSheet, StatusBar } from "react-native"
 import { LogoCard } from "../../../../components/about/LogoCard/LogoCard"
 import { TimingCard } from "../../../../components/about/TimingCard/TimingCard"
@@ -10,7 +9,7 @@ import { OwnershipCard } from "../../../../components/about/OwnershipCard/Owners
 
 export const L1_AboutUs = () => {
     return (
-        <>
+        <View>
             <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
             <ScrollView>
                 <View style={styles.headerContainer}>
@@ -41,7 +40,7 @@ export const L1_AboutUs = () => {
                     <OwnershipCard/>
                 </View>
             </ScrollView>
-        </>
+        </View>
     )
 }
 
