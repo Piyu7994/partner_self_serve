@@ -12,7 +12,8 @@ export const RegistrationFeeCard = () => {
                 isLabelMandatory={false}
                 showHelperField={false}
                 state="Default"
-                type="Custom"
+                type="Amount"
+                
             />
         </View>
         )
