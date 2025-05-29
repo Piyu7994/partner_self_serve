@@ -6,6 +6,7 @@ import { L1_LogoCover } from "../screens/establishment/about/AboutUsFlow/L1_Logo
 import { L2_EstablishmentDescription } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentDescription";
 import { L2_EstablishmentName } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentName";
 import { L2_FoundationYear } from "../screens/establishment/about/AboutUsFlow/L2_FoundationYear";
+import { L2_RegistrationFee } from "../screens/establishment/about/AboutUsFlow/L2_RegistrationFee";
 
 const AppNavigator = () => {
     const AppStack = createNativeStackNavigator();
@@ -42,6 +43,10 @@ const AppNavigator = () => {
             <AppStack.Screen
                 name="L2_FoundationYear"
                 component={L2_FoundationYear}
+            />
+            <AppStack.Screen
+                name="L2_RegistrationFee"
+                component={L2_RegistrationFee}
             />
            
         </AppStack.Navigator>
