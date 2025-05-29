@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "../theme/color";
 import EstablishmentOverviewScreen from "../screens/establishment/EstablishmentOverview";

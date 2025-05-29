@@ -79,7 +79,7 @@ export const AddMedia = ({
                 {
                     text: 'Add Media',
                     btnStyle: 'Outline',
-                    size: 'Large',
+                    //size: 'Large',
                     onPress: onAddMediaPress,
                 }
             }

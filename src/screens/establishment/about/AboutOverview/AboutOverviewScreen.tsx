@@ -1,8 +1,22 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { StyleSheet, Text, View } from "react-native"
 import { AboutUsTiming, Address, Divider, GenericCard, GenericList, InfoCard, MediaTile } from '@practo/self-serve'
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+
+type RootStackParamList = {
+    L1_AboutUs: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'L1_AboutUs'>;
 
 export const AboutOverviewScreen: React.FC = () => {
+
+    const navigation = useNavigation<NavigationProp>();
+
+    const onBtnClick = () =>{
+        navigation.navigate('L1_AboutUs')        
+    }
 
     const headerProps = {
         title: 'About Apollo Hospital',
@@ -15,6 +29,7 @@ export const AboutOverviewScreen: React.FC = () => {
         text: 'Update about hospital',
         type: 'Neutral',
         btnStyle: 'Outline',
+        onPress: onBtnClick,
     }
 
     const insurance = <View>
@@ -158,21 +173,3 @@ export const AboutOverviewScreen: React.FC = () => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    sectionheading: {
-        fontSize: 15,
-        lineHeight: 18,
-        letterSpacing: -0.16,
-        fontWeight: 700,
-        marginStart: 10
-    },
-    sectionText: {
-        fontSize: 12,
-        lineHeight: 14,
-        letterSpacing: -0.14,
-        fontWeight: 400,
-        marginStart: 10
-    }
-
-})

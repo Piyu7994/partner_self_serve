@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react"
 import { View, StyleSheet } from "react-native"
 import { LogoCover } from "../../../../components/about/LogoCover/LogoCover"
@@ -79,10 +80,9 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        paddingTop: 24,
     },
     gap: {
-        height: 10,
+        height: 0,
     },
     logoCoverWrapper: {
         marginBottom: 200,
@@ -97,6 +97,6 @@ const styles = StyleSheet.create({
     headerContainer: {
         backgroundColor: '#ffffff',
         height: 56,
-        marginBottom: 24,
+        paddingStart: 16
     }
 })

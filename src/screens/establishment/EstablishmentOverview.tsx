@@ -2,11 +2,11 @@
  * Level 0 screen of provide establishment self-serve
  */
 
-import { FlatList, Image, ScrollView, StyleSheet, View } from "react-native";
+import { FlatList, Image, ScrollView, StatusBar, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 
-import hospitalCoverImg from '../../assets/images/hospital_cover.png'
+import hospitalCoverImg from '../../assets/images/img_hospital.png'
 import { AboutOverviewScreen } from "./about/AboutOverview/AboutOverviewScreen";
 import { MediaGalleryScreen } from "./media/MediaGalleryScreen/MediaGalleryScreen";
 
@@ -16,7 +16,6 @@ const EstablishmentOverviewScreen: React.FC = () => {
             <FlatList
                 data={[]}
                 renderItem={null}
-                style={styles.cardsContainer}
                 ListHeaderComponent={
                     <>
                         <Image source={hospitalCoverImg} style={{width: '100%', height: 192}}/>
