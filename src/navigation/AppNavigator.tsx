@@ -4,6 +4,7 @@ import { colors } from "../theme/color";
 import { L1_AboutUs } from "../screens/establishment/about/AboutUsFlow/L1_AboutUs";
 import { L1_LogoCover } from "../screens/establishment/about/AboutUsFlow/L1_LogoCover";
 import { L2_EstablishmentDescription } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentDescription";
+import { L2_EstablishmentName } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentName";
 
 const AppNavigator = () => {
     const AppStack = createNativeStackNavigator();
@@ -32,6 +33,10 @@ const AppNavigator = () => {
             <AppStack.Screen
                 name="L2_EstablishmentDescription"
                 component={L2_EstablishmentDescription}
+            />
+            <AppStack.Screen
+                name="L2_EstablishmentName"
+                component={L2_EstablishmentName}
             />
            
         </AppStack.Navigator>
