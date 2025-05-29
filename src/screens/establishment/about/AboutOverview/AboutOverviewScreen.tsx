@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { StyleSheet, Text, View } from "react-native"
 import { AboutUsTiming, Address, Divider, GenericCard, GenericList, InfoCard, MediaTile } from '@practo/self-serve'
 

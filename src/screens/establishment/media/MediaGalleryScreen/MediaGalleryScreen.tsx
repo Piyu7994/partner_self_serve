@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { View, StyleSheet, FlatList } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MediaTile, Button } from "@practo/self-serve"
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     content: {
-        padding: 12,
+        padding: 0,
     },
     flatList: {
         paddingBottom: 12,

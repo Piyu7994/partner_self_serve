@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
-import Video from 'react-native-video';
+// import Video from 'react-native-video';
 
 export type MediaPreviewProps = {
   uri: string;
@@ -11,20 +11,20 @@ export type MediaPreviewProps = {
 export const MediaPreview: React.FC<MediaPreviewProps> = ({ uri, isVideo, duration }) => {
   return (
     <View style={styles.mediaContainer}>
-      {isVideo ? (
+      {/* {isVideo ? (
         <Video
           source={{ uri }}
           style={styles.media}
           resizeMode="cover"
           controls={true}
         />
-      ) : (
+      ) : ( */}
         <Image
           source={{ uri }}
           style={styles.media}
           resizeMode="cover"
         />
-      )}
+      {/* )} */}
       {isVideo && duration && (
         <View style={styles.durationOverlay}>
           <Text style={styles.durationText}>{duration}</Text>
