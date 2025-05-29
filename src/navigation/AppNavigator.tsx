@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "../theme/color";
 import { L1_AboutUs } from "../screens/establishment/about/AboutUsFlow/L1_AboutUs";
 import { L1_LogoCover } from "../screens/establishment/about/AboutUsFlow/L1_LogoCover";
+import { L2_EstablishmentDescription } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentDescription";
 
 const AppNavigator = () => {
     const AppStack = createNativeStackNavigator();
@@ -27,6 +28,10 @@ const AppNavigator = () => {
             <AppStack.Screen
                 name="L1_LogoCover"
                 component={L1_LogoCover}
+            />
+            <AppStack.Screen
+                name="L2_EstablishmentDescription"
+                component={L2_EstablishmentDescription}
             />
            
         </AppStack.Navigator>
