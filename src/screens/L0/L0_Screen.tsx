@@ -970,14 +970,16 @@ const L0_Screen: React.FC = () => {
                 radioProps={{
                   action: 'Left',
                   description: 'Ear Nose Throat',
-                  heading: false,
+                  showHeading: false,
                   label: 'Ear Nose Throat',
                   showDescription: false,
                   size: 'Large',
                   state: 'Default',
-                  type: 'Neutral'
+                  type: 'Neutral',
+                  handleClick: true
                 }}
-                showCheckbox
+                showBorder={false}
+                showRadio
               />
             </View>
 
