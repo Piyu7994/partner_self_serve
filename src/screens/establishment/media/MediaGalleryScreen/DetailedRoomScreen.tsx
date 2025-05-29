@@ -42,12 +42,13 @@ export const RoomPhotoDetailsScreen = () => {
     <SafeAreaView edges={['left', 'right', 'bottom']} style={styles.container}>
       <MediaPreview uri={imageUrl} isVideo={false} duration={undefined} />
       <GenericCard body={<InfoCardList />} />
-      <Button
-        text="Delete Photo"
-        btnStyle="Outline"
-        size="Large"
-        onPress={() => {}}
-        type="Warning"
+      <View style={styles.deleteButton} />
+        <Button
+          text="Delete Photo"
+          btnStyle="Outline"
+          size="Large"
+          onPress={() => {}}
+          type="Warning"
         state="Default"
       />
     </SafeAreaView>
@@ -63,7 +64,5 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     marginTop: 24,
-    width: '100%',
-    alignSelf: 'center',
   },
 });
