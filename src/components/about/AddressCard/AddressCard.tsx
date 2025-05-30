@@ -1,7 +1,19 @@
 import { Address, ContactInfoCard} from "@practo/self-serve"
 import { View, StyleSheet } from "react-native"
+import { useNavigation } from "@react-navigation/native"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+
+type RootStackParamList = {
+    L2_EstablishmentName: undefined;
+    L2_ContactInfo: undefined;
+    L2_EmergencyContactCard: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export const AddressCard = () => {
+    const navigation = useNavigation<NavigationProp>();
+
     return (
         <View style={styles.card}>
             <ContactInfoCard
@@ -12,18 +24,10 @@ export const AddressCard = () => {
                     title: 'Location & Address',
                     variant: 'Large'
                 }}
-                contactInfoCardProps={{
-                    rightIcon: 'Arrow',
-                    title: 'Contact number for patients',
-                    variant: 'Small'
-                }}
+                onContactPress={() => navigation.navigate('L2_ContactInfo')}
                 contactNumber="9876543210"
+                onEmergencyContactPress={() => navigation.navigate('L2_EmergencyContactCard')}
                 emergencyContactNumber="1122334455"
-                emergencyInfoCardProps={{
-                    rightIcon: 'Arrow',
-                    title: 'Emergency contact number for patients',
-                    variant: 'Small'
-                }}
             />
         </View>
     )

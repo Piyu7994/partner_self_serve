@@ -7,14 +7,24 @@ import { FeeCard } from "../../../../components/about/FeeCard/FeeCard"
 import { Header } from "@practo/self-serve"
 import { InsuranceCard } from "../../../../components/about/InsuranceCard/InsuranceCard"
 import { OwnershipCard } from "../../../../components/about/OwnershipCard/OwnershipCard"
+import { useNavigation } from "@react-navigation/native"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+
+type RootStackParamList = {
+    AboutOverviewScreen: undefined; 
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export const L1_AboutUs = () => {
+    const navigation = useNavigation<NavigationProp>();
+
     return (
         <View>
             <ScrollView>
                 <View style={styles.headerContainer}>
                     <Header
-                        onBackPress={() => {}}
+                        onBackPress={() => navigation.goBack()}
                         showBackIcon
                         subtext=""
                         title="About"
@@ -56,7 +66,8 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         backgroundColor: '#ffffff',
-        height: 56,
+        height: 100,
+        paddingTop: 20,
         paddingStart: 16
     }
 })

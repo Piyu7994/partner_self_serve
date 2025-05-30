@@ -54,8 +54,10 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         backgroundColor: '#ffffff',
-        height: 56,
-        paddingStart: 16
+        height: 100,
+        paddingStart: 16,
+        paddingTop: 20,
+        
     },
     buttonContainer: {
         paddingHorizontal: 16,
