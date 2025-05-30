@@ -190,6 +190,7 @@ const styles = StyleSheet.create({
   snackbarContainer: {
     height: 60,
     paddingHorizontal: 12,
+    paddingBottom: 8,
   },
   addButtonContainer: {
     padding: 12,
