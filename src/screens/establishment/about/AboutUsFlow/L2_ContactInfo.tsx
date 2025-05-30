@@ -1,13 +1,19 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native"
-import { EstablishmentName } from "../../../../components/about/EstablishmentDetailsCard/EstablishmentName"
+import { StyleSheet, View, KeyboardAvoidingView, Platform, ScrollView } from "react-native"
+import { ContactCard } from "../../../../components/about/ContactCard/ContactCard"
 import { Header } from "@practo/self-serve"
-import {EstablishmentDescription} from "../../../../components/about/EstablishmentDescriptionCard/EstablishmentDescription"
 import { BottomSaveButton } from "../../../../components/about/BottomSaveButton/BottomSaveButton"
 import { useNavigation } from "@react-navigation/native"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+import { colors } from "../../../../theme/color"
 
-export const L2_EstablishmentDescription = () => {
-    const navigation = useNavigation();
+type RootStackParamList = {
+    L1_AboutUs: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
+export const L2_ContactInfo = () => {
+    const navigation = useNavigation<NavigationProp>();
 
     return (
         <KeyboardAvoidingView 
@@ -18,17 +24,19 @@ export const L2_EstablishmentDescription = () => {
             <View style={styles.content}>
                 <View style={styles.gap} />
                 <View style={styles.headerContainer}>
-                <Header
-                    onBackPress={() => navigation.goBack()}
-                    showBackIcon
-                    subtext=""
-                    title="Establishment Description"
-                    variant="Screen Header"
-                />
+                    <Header
+                        onBackPress={() => navigation.goBack()}
+                        showBackIcon
+                        subtext=""
+                        title="Add Contact Number"
+                        variant="Screen Header"
+                    />
                 </View>
-                <View style={styles.inputWrapper}>
-                    <EstablishmentDescription/>
-                </View>
+                <ScrollView style={styles.scrollView}>
+                    <View style={styles.inputWrapper}>
+                        <ContactCard />
+                    </View>
+                </ScrollView>
             </View>
             <View style={styles.buttonContainer}>
                 <BottomSaveButton/>
@@ -40,12 +48,16 @@ export const L2_EstablishmentDescription = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: colors.bg.tertiary,
     },
     content: {
         flex: 1,
     },
     gap: {
-        height: 0,
+        height: 10,
+    },
+    scrollView: {
+        flex: 1
     },
     inputWrapper: {
         marginTop: 24,
@@ -58,7 +70,7 @@ const styles = StyleSheet.create({
         height: 100,
         paddingStart: 16,
         paddingTop: 20,
-        
+        paddingBottom: 16,
     },
     buttonContainer: {
         paddingHorizontal: 16,

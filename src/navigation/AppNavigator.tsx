@@ -13,6 +13,8 @@ import { L2_EstablishmentDescription } from "../screens/establishment/about/Abou
 import { L2_EstablishmentName } from "../screens/establishment/about/AboutUsFlow/L2_EstablishmentName";
 import { L2_FoundationYear } from "../screens/establishment/about/AboutUsFlow/L2_FoundationYear";
 import { L2_RegistrationFee } from "../screens/establishment/about/AboutUsFlow/L2_RegistrationFee";
+import { L2_ContactInfo } from "../screens/establishment/about/AboutUsFlow/L2_ContactInfo";
+import { L2_EmergencyContactCard } from "../screens/establishment/about/AboutUsFlow/L2_EmergencyContactInfo";
 
 const AppNavigator = () => {
     const AppStack = createNativeStackNavigator();
@@ -23,7 +25,7 @@ const AppNavigator = () => {
             screenOptions={{
                 headerShown: false,
                 statusBarTranslucent: true,
-                statusBarStyle: 'light',
+                statusBarStyle: 'dark',
                 statusBarBackgroundColor: 'transparent',
                 contentStyle: {
                     backgroundColor: colors.bg.tertiary,
@@ -44,9 +46,6 @@ const AppNavigator = () => {
                 options={{
                     title: "Media Galleryyyy",
                     headerShown: true,
-                    // header: ({ navigation, route, options }) => (
-                    //     <CustomHeader title="Media Gallery" onBack={() => navigation.goBack()} />
-                    // ),
                 }}
             />
             <AppStack.Screen
@@ -96,6 +95,14 @@ const AppNavigator = () => {
             <AppStack.Screen
                 name="L2_RegistrationFee"
                 component={L2_RegistrationFee}
+            />
+            <AppStack.Screen
+                name="L2_ContactInfo"
+                component={L2_ContactInfo}
+            />
+             <AppStack.Screen
+                name="L2_EmergencyContactCard"
+                component={L2_EmergencyContactCard}
             />
         </AppStack.Navigator>
     )
