@@ -3,8 +3,10 @@ import { View, StyleSheet, Image, Text, TouchableOpacity, ScrollView, RefreshCon
 import { Header, TransparentPill, AddLogo, Alert, DoctorItemGeneral, Input, InfoCard } from '@practo/self-serve'
 import { Button } from '../SurgeryOverviewCard/SurgeryOverviewCard'
 import BottomSheet from '../../BottomSheet/BottomSheet'
+import { RemoveModal } from '../../RemoveModal/RemoveModal'
 
 interface SurgeryData {
+    hospitalName: string;
     surgeryName: string;
     showRatingButton: boolean;
     surgeryPrice: {
@@ -297,6 +299,7 @@ const ModalChildrenMedia = () => {
 }
 
 export interface SurgeryDetailsPageProps {
+    hospitalName: string;
     surgeryName: string;
     showRatingButton: boolean;
     surgeryPrice: {
@@ -320,10 +323,11 @@ export interface SurgeryDetailsPageProps {
 }
 
 const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
-  const { surgeryName, showRatingButton, surgeryPrice, pillText, reviewCount, rating, surgeryDescriptionQuestion, surgeryDescription, showMedia, doctorData, onRefresh } = props;
+  const { hospitalName, surgeryName, showRatingButton, surgeryPrice, pillText, reviewCount, rating, surgeryDescriptionQuestion, surgeryDescription, showMedia, doctorData, onRefresh } = props;
   const [isPriceModalVisible, setIsPriceModalVisible] = useState(false);
   const [isDescriptionModalVisible, setIsDescriptionModalVisible] = useState(false);
   const [isMediaModalVisible, setIsMediaModalVisible] = useState(false);
+  const [isRemoveModalVisible, setIsRemoveModalVisible] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [localPrice, setLocalPrice] = useState(surgeryPrice);
   const [localDescription, setLocalDescription] = useState({
@@ -539,6 +543,46 @@ const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
                 type="Neutral"
             />
         </View>
+        <Button
+            style={styles.removeBtn}
+            text="Remove surgery/treatment"
+            btnStyle="Outline"
+            size="Large"
+            type="Warning"
+            onPress={() => {setIsRemoveModalVisible(true)}}
+        />
+        <RemoveModal
+            isRemoveModalVisible={isRemoveModalVisible}
+            onModalClose={() => setIsRemoveModalVisible(false)}
+            animationStyle="slide"
+        >
+            <View style={styles.bottomSheetOverlay}>
+          <View style={styles.bottomSheet}>
+            <View style={styles.modalContent}>
+                <Image source={require('../../../assets/images/img_hospital.png')} style={styles.modalImage}></Image>
+                <Text style={styles.modalText}>{surgeryName} will be removed from {hospitalName}</Text>
+            </View>
+            <Button
+              text="Remove"
+              btnStyle="Fill"
+              type="Warning"
+              size="Large"
+              onPress={() => {setIsRemoveModalVisible(false)}}
+              style={{ marginTop: 16 }}
+            />
+            <Button
+              text="Cancel"
+              btnStyle="Outline"
+              type="Neutral"
+              size="Large"
+              onPress={() => {
+                setIsRemoveModalVisible(false);
+              }}
+              style={{ marginTop: 16 }}
+            />
+          </View>
+        </View>
+        </RemoveModal>
     </ScrollView>
   )
 }
@@ -712,7 +756,49 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F5',
         paddingBottom: 20   
-    }
+    },
+    removeBtn: {
+        marginTop: 10,
+        width: '93%',
+        alignSelf: 'center',
+        marginBottom: 20
+    },
+    bottomSheetOverlay: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+      },
+      bottomSheet: {
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 24,
+        height: 'auto',
+        width: '100%',
+        shadowColor: '#000',
+      },
+      modalContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 10,
+        marginTop: 15,
+        width: '100%',
+        alignSelf: 'center',
+        paddingHorizontal: 20
+      },
+      modalImage: {
+        width: 40,
+        height: 40,
+        borderRadius: 10,
+        marginBottom: 12,
+        },
+      modalText: {
+        fontFamily: 'Lato',
+        fontWeight: 700,
+        fontSize: 15,
+        lineHeight: 18,
+      }
   });
 
 export default SurgeryDetailsPage

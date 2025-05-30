@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import SurgeryDetailsPage, { SurgeryDetailsPageProps } from '../../../components/surgery/SurgeryDetailsPage/SurgeryDetailsPage'
 
 const mapStateToProps = (state: any): SurgeryDetailsPageProps => ({
+    hospitalName: 'Apollo Hospital',
     surgeryName: 'Robotic Knee Replacement surgery',
     showRatingButton: true,
     surgeryPrice: {

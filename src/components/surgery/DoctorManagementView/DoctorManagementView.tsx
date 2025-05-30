@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Modal, Image } from 'react-native'
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 import { Header, Search, DoctorItemGeneral } from '@practo/self-serve'
 import { Button } from '../SurgeryOverviewCard/SurgeryOverviewCard'
-
+import { RemoveModal } from '../../RemoveModal/RemoveModal'
 export interface DoctorManagementViewProps {
   doctorData?: Array<{
     name: string;
@@ -47,7 +47,7 @@ const DoctorManagementView: React.FC<DoctorManagementViewProps> = ({ doctorData 
   const [pageState, setPageState] = useState<'ViewAll' | 'Remove'>('ViewAll')
   const [isRemoveModalVisible, setIsRemoveModalVisible] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
-  const [query, setQuery] = useState(''); 
+  const [query, setQuery] = useState<String | null>(null); 
   const [doctorList, setDoctorList] = useState(doctorData);
 
   const handleRemoveDoctor = () => {
@@ -55,6 +55,7 @@ const DoctorManagementView: React.FC<DoctorManagementViewProps> = ({ doctorData 
       setDoctorList(prevList => prevList.filter(doctor => doctor.name !== selectedDoctor.name));
       setIsRemoveModalVisible(false);
       setSelectedDoctor(null);
+      setQuery(null);
     }
   };
 
@@ -62,7 +63,7 @@ const DoctorManagementView: React.FC<DoctorManagementViewProps> = ({ doctorData 
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <Header
-          onBackPress={() => {}}
+          onBackPress={() => {setQuery(null); setPageState('ViewAll')}}
           showBackIcon={true}
           title={pageState === 'ViewAll' ? 'Doctor' : 'Remove Doctor'}
           variant="Screen Header"
@@ -140,45 +141,6 @@ const DoctorManagementView: React.FC<DoctorManagementViewProps> = ({ doctorData 
               </View>
             ))}
           </View>
-          <Modal
-            visible={isRemoveModalVisible}
-            onRequestClose={() => setIsRemoveModalVisible(false)}
-            transparent={true}
-            animationType="slide"
-          >
-            <View style={styles.bottomSheetOverlay}>
-              <View style={styles.bottomSheet}>
-                {selectedDoctor && (
-                  <View style={styles.modalContent}>
-                    <Image
-                      source={{ uri: selectedDoctor.imageUrl }}
-                      style={styles.modalDoctorImage}
-                    />
-                    <Text style={styles.modalDoctorName}>{selectedDoctor.name} will be removed from Robotic knee replacement surgery</Text>
-                  </View>
-                )}
-                <Button
-                  text="Remove"
-                  btnStyle="Fill"
-                  type="Warning"
-                  size="Large"
-                  onPress={handleRemoveDoctor}
-                  style={{ marginTop: 16 }}
-                />
-                <Button
-                  text="Cancel"
-                  btnStyle="Outline"
-                  type="Neutral"
-                  size="Large"
-                  onPress={() => {
-                    setIsRemoveModalVisible(false);
-                    setSelectedDoctor(null);
-                  }}
-                  style={{ marginTop: 16 }}
-                />
-              </View>
-            </View>
-          </Modal>
         </>
       ) : (
         <>
@@ -187,6 +149,17 @@ const DoctorManagementView: React.FC<DoctorManagementViewProps> = ({ doctorData 
               .filter(doctor => doctor.name.toLowerCase().includes(query.toLowerCase()))
               .map((doctor, index) => (
                 <View key={index} style={styles.doctorCardContainer}>
+                  {pageState === 'Remove' && (
+                    <TouchableOpacity 
+                      style={styles.removeIcon}
+                      onPress={() => {
+                        setSelectedDoctor(doctor);
+                        setIsRemoveModalVisible(true);
+                      }}
+                    >
+                      <Text style={styles.removeIconText}>❌</Text>
+                    </TouchableOpacity>
+                  )}
                   <DoctorItemGeneral
                     bookBadgeProps={{
                       label: 'Book',
@@ -234,6 +207,45 @@ const DoctorManagementView: React.FC<DoctorManagementViewProps> = ({ doctorData 
           </View>
         </>
       )}
+      <RemoveModal
+        isRemoveModalVisible={isRemoveModalVisible}
+        onModalClose={() => setIsRemoveModalVisible(false)}
+        animationStyle="slide"
+      >
+        <View style={styles.bottomSheetOverlay}>
+          <View style={styles.bottomSheet}>
+            {selectedDoctor && (
+              <View style={styles.modalContent}>
+                <Image
+                  source={{ uri: selectedDoctor.imageUrl }}
+                  style={styles.modalDoctorImage}
+                />
+                <Text style={styles.modalDoctorName}>{selectedDoctor.name} will be removed from Robotic knee replacement surgery</Text>
+              </View>
+            )}
+            <Button
+              text="Remove"
+              btnStyle="Fill"
+              type="Warning"
+              size="Large"
+              onPress={handleRemoveDoctor}
+              style={{ marginTop: 16 }}
+            />
+            <Button
+              text="Cancel"
+              btnStyle="Outline"
+              type="Neutral"
+              size="Large"
+              onPress={() => {
+                setIsRemoveModalVisible(false);
+                setSelectedDoctor(null);
+                setQuery(null);
+              }}
+              style={{ marginTop: 16 }}
+            />
+          </View>
+        </View>
+      </RemoveModal>
       <View style={pageState === 'ViewAll' ? styles.btnContainer : styles.doneContainer}>
         {pageState === 'ViewAll' ? (
           <>

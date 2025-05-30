@@ -52,8 +52,9 @@ export const Button: React.FC<ButtonProps> = ({
     if (btnStyle === 'Outline') {
       return {
         backgroundColor: '#FFFFFF',
-        textColor: type === 'Neutral' ? '#000000' : '#1890FF',
-        iconColor: type === 'Neutral' ? '#000000' : '#1890FF'
+        textColor: type === 'Neutral' ? '#000000' : '#dc2626',
+        iconColor: type === 'Neutral' ? '#000000' : '#dc2626',
+        borderColor: type === 'Neutral' ? '#000000' : '#dc2626'
       };
     }
     return {
@@ -116,7 +117,7 @@ export const Button: React.FC<ButtonProps> = ({
     opacity: disabled ? 0.5 : 1,
     ...(btnStyle === 'Outline' && {
       borderWidth: 1,
-      borderColor: '#000000',
+      borderColor: getColors().borderColor,
     })
   };
 
