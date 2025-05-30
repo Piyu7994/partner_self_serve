@@ -22,7 +22,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({ uri, isVideo, durati
         <Image
           source={{ uri }}
           style={styles.media}
-          resizeMode="cover"
+          resizeMode="stretch"
         />
       )}
       {isVideo && duration && (
@@ -37,7 +37,7 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({ uri, isVideo, durati
 const styles = StyleSheet.create({
   mediaContainer: {
     width: '100%',
-    height: '40%',
+    height: '45%',
     borderRadius: 16,
     overflow: 'hidden',
     marginBottom: 16,

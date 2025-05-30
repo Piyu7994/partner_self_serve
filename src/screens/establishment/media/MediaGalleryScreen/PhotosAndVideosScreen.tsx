@@ -54,13 +54,13 @@ const COLLECTION_ITEMS: CollectionItem[] = [
 
 const HeaderAlert = () => (
     <Alert
-        description="Missing this can reduce patient trust and hospital credibility"
-        leftIconType="Info"
-        priority="Secondary"
-        rightAction={false}
-        state="Error"
-        title="Add photos and videos of operation theatre"
-    />
+            description="Missing this can reduce patient trust and hospital credibility"
+            leftIconType="Info"
+            priority="Secondary"
+            rightAction={false}
+            state="Error"
+            title="Add photos and videos of operation theatre"
+        />
 );
 
 const CollectionGrid = () => {
@@ -108,10 +108,11 @@ export const PhotosAndVideosScreen = () => {
 
 const styles = StyleSheet.create({
     section: {
+        gap: 12,
         marginTop: 12,
+        paddingHorizontal: 16,
     },
     gridList: {
         alignItems: 'center',
-        marginTop: 12,
     },
 });
