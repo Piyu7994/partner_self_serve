@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import {SurgeryCard} from '@practo/self-serve';
 import { Loader } from '@practo/self-serve';
+import {useNavigation} from '@react-navigation/native';
 
 interface AlertBox {
   title: string;
@@ -33,6 +34,7 @@ const getPriceRange = (priceData: PriceRange): string => {
 };
 
 const SurgeryCardWrapper = memo(({item}: {item: SurgeryItem}) => {
+  const navigation = useNavigation();
   const alertBoxData = item.alert_box
     ? {
         CTA: false,
@@ -57,7 +59,9 @@ const SurgeryCardWrapper = memo(({item}: {item: SurgeryItem}) => {
     <View style={styles.cardWrapper}>
       <SurgeryCard
         alertBoxData={alertBoxData}
-        onPress={() => {}}
+        onPress={() => {
+          navigation.navigate('SurgeryDetailScreen' as never);
+        }}
         surgeryItemData={surgeryItemData}
       />
     </View>

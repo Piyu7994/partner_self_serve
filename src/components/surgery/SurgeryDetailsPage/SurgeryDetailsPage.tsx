@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Image, Text, TouchableOpacity, ScrollView, RefreshControl, Keyboard } from 'react-native'
 import { Header, TransparentPill, AddLogo, Alert, DoctorItemGeneral, Input, InfoCard } from '@practo/self-serve'
 import { Button } from '../SurgeryOverviewCard/SurgeryOverviewCard'
-import BottomSheet from '../../BottomSheet/BottomSheet'
+import BottomSheet from '../../../containers/common/BottomSheet/BottomSheetContainer'
 import { RemoveModal } from '../../RemoveModal/RemoveModal'
+import { useNavigation } from '@react-navigation/native'
 
 interface SurgeryData {
     hospitalName: string;
@@ -323,6 +324,7 @@ export interface SurgeryDetailsPageProps {
 }
 
 const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
+  const navigation = useNavigation();
   const { hospitalName, surgeryName, showRatingButton, surgeryPrice, pillText, reviewCount, rating, surgeryDescriptionQuestion, surgeryDescription, showMedia, doctorData, onRefresh } = props;
   const [isPriceModalVisible, setIsPriceModalVisible] = useState(false);
   const [isDescriptionModalVisible, setIsDescriptionModalVisible] = useState(false);
@@ -395,7 +397,7 @@ const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
         </View>
         <View>
             <Image 
-                source={require('../../../assets/images/img_hospital.png')}
+                source={{uri: 'https://rukminim3.flixcart.com/image/720/864/k8q8nm80/poster/q/p/h/medium-animated-car-cartoon-poster-decorative-poster-poster-for-original-imafqzdcxa5pwgny.jpeg?q=60&crop=false'}}
                 style={styles.image}
             />
             <View style={styles.pill}>
@@ -415,7 +417,7 @@ const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
             <View style={styles.priceContainer}>
                 <TouchableOpacity style={styles.flxItem} onPress={() => {setIsPriceModalVisible(true)}}>
                     <Text style={styles.priceHeaderText}>Price Range</Text>
-                    <Image style={styles.chevron} source={require('../../../assets/icons/chevron_right_filled.png')}></Image>
+                    <Image style={styles.chevron} source={{uri: 'https://rukminim3.flixcart.com/image/720/864/k8q8nm80/poster/q/p/h/medium-animated-car-cartoon-poster-decorative-poster-poster-for-original-imafqzdcxa5pwgny.jpeg?q=60&crop=false'}}></Image>
                 </TouchableOpacity>
                 <BottomSheet
                     visible={isPriceModalVisible}
@@ -429,7 +431,7 @@ const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
             <View style={styles.questionContainer}>
                 <TouchableOpacity onPress={()=>{setIsDescriptionModalVisible(true)}} style={styles.flxItem}>
                     <Text style={styles.priceHeaderText}>{localDescription.title ?? 'Description'}</Text>
-                    <Image style={styles.chevron} source={require('../../../assets/icons/chevron_right_filled.png')}></Image>
+                    <Image style={styles.chevron} source={{uri: 'https://rukminim3.flixcart.com/image/720/864/k8q8nm80/poster/q/p/h/medium-animated-car-cartoon-poster-decorative-poster-poster-for-original-imafqzdcxa5pwgny.jpeg?q=60&crop=false'}}></Image>
                 </TouchableOpacity>
                 <BottomSheet
                     visible={isDescriptionModalVisible}
@@ -541,6 +543,7 @@ const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
                 btnStyle="Outline"
                 size="Small"
                 type="Neutral"
+                onPress={() => {navigation.navigate('DoctorManagementView' as never)}}
             />
         </View>
         <Button
@@ -559,7 +562,7 @@ const SurgeryDetailsPage: React.FC<SurgeryDetailsPageProps> = (props) => {
             <View style={styles.bottomSheetOverlay}>
           <View style={styles.bottomSheet}>
             <View style={styles.modalContent}>
-                <Image source={require('../../../assets/images/img_hospital.png')} style={styles.modalImage}></Image>
+                <Image source={{uri: 'https://rukminim3.flixcart.com/image/720/864/k8q8nm80/poster/q/p/h/medium-animated-car-cartoon-poster-decorative-poster-poster-for-original-imafqzdcxa5pwgny.jpeg?q=60&crop=false'}} style={styles.modalImage}></Image>
                 <Text style={styles.modalText}>{surgeryName} will be removed from {hospitalName}</Text>
             </View>
             <Button

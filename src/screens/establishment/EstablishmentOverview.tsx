@@ -5,12 +5,13 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
+import SurgeryOverviewContainer  from "../../containers/surgery/SurgeryOverviewContainer/SurgeryOverview.Container";
 
 const EstablishmentOverviewScreen: React.FC = () => {
     return (
         <SafeAreaView edges={['left', 'right', 'bottom' ]} style={{flex: 1}}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                
+                <SurgeryOverviewContainer />
             </ScrollView>
         </SafeAreaView>
     )

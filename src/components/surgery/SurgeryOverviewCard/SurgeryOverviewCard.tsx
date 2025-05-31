@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { SurgeryItem, Alert } from "@practo/self-serve";
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, Image, ViewStyle, TextStyle, ImageStyle, Modal, TouchableWithoutFeedback } from "react-native";
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
+type RootStackParamList = {
+  L0: undefined;
+  ServiceList: undefined;
+};
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 interface ButtonProps {
   text: string;
   onPress?: () => void;
@@ -257,7 +265,7 @@ export interface SurgeryOverviewCardProps {
 
 const SurgeryOverviewCard: React.FC<SurgeryOverviewCardProps> = ({header, buttons, surgeries, alert, bottomSheetData, bottomSheetHeader}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const navigation = useNavigation<NavigationProp>();
   return (
     <View style={styles2.cont}>
       <Header
@@ -324,6 +332,7 @@ const SurgeryOverviewCard: React.FC<SurgeryOverviewCardProps> = ({header, button
         size={buttons.addButton.size}
         text={buttons.addButton.text}
         type={buttons.addButton.type}
+        onPress={() => {navigation.navigate('ServiceList' as never)}}
       />
       <Modal
       animationType="none"
@@ -361,6 +370,7 @@ const SurgeryOverviewCard: React.FC<SurgeryOverviewCardProps> = ({header, button
         size={buttons.modalButton.size}
         style={styles2.modalButton}
         textStyle={{color:"#FFFFFF"}}
+        onPress={() => {navigation.navigate('ServiceList' as never)}}
       />
       </View>
       </View>
